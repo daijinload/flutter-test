@@ -1,0 +1,63 @@
+{
+	"folders": [
+		{
+			"name": "roomon-admin-console",
+			"path": "../../roomon/roomon-admin-console"
+		},
+		{
+			"name": "roomon-api",
+			"path": "../../roomon/roomon-api"
+		},
+		{
+			"name": "roomon-console",
+			"path": "../../roomon/roomon-console"
+		},
+		{
+			"name": "roomon-graphql-schema",
+			"path": "../../roomon/roomon-graphql-schema"
+		},
+		{
+			"name": "sample-firebase",
+			"path": "../../roomon/sample-firebase"
+		},
+		{
+			"name": "roomon-bcu-android",
+			"path": "../../roomon/roomon-bcu-android"
+		},
+		{
+			"name": "king-api",
+			"path": "../../king-api"
+		},
+		{
+			"name": "smartlock-king-keyfi-android",
+			"path": "../../smartlock-king-keyfi-android"
+		},
+		{
+			"name": "rust-test",
+			"path": "../../rust-test"
+		},
+		{
+			"name": "castle-api",
+			"path": "../../castle-api"
+		},
+		{
+			"name": "roomon-debug-api",
+			"path": "../../roomon/roomon-debug-api"
+		},
+		{
+			"name": "roomon-bcu-ios",
+			"path": "../../roomon/roomon-bcu-ios"
+		},
+		{
+			"name": "roomon-api-migration",
+			"path": "../../roomon/roomon-api-migration"
+		},
+		{
+			"name": "king-library",
+			"path": "../../king-library"
+		},
+		{
+			"path": "../../customer-support-api"
+		}
+	]
+}
