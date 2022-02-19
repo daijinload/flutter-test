@@ -19,7 +19,7 @@ void main() {
       expect("", state.str);
     });
     test('ボタンを押したら、json文字列が表示されること', () async {
-      await state.userInfo();
+      await state.onPressedUserInfo();
       expect('{"name":"hello"}\n', state.str);
     });
   });
