@@ -18,7 +18,9 @@ class UserPageState extends State<UserPage> {
     container.setUp();
 
     // デコレータパターン
-    // サービスロケータパターンよりも型チェックが効くが見た目ごつい感じ。
+    // サービスロケータパターンよりも型チェックが効くが見た目ごついし、
+    // 実行関数とパラメータを渡さないと、何がどのパラメータで実行されている？
+    // というログは取れないパターンとなる。
     var resultbk = await wrap.exec(user_usecase.userInfo, () {
       return user_usecase.userInfo('');
     });
@@ -26,6 +28,9 @@ class UserPageState extends State<UserPage> {
 
     // サービスロケータパターン
     // 型チェックが効かなくなるが、ログなど見やすく出せると思われるパターン。
+    // コンテナ側にユースケースを作成するたびに追加しなければならず、大きくなる。
+    // リフレクションで取ってこようとしたが、それだと全てのコードが必要になりカリングができず、
+    // バイナリサイズが大きくなる的な話があったため、importを地道に書くことにした。
     var result = await container.get("/user/info")("uuu");
     setState(() {
       str = result;
