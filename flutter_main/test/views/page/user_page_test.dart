@@ -12,7 +12,7 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   late UserPageState state;
   setUpAll(() {
-    state = const UserPage(title:"").createElement().state as UserPageState;
+    state = const UserPage(title: "").createElement().state as UserPageState;
   });
   group('ユーザ情報表示テスト', () {
     test('初回は空文字で表示すること', () {
