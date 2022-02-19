@@ -29,11 +29,8 @@ Future<String> getApi(String path) async {
   var client = HttpClient();
   try {
     HttpClientRequest request = await client.get('127.0.0.1', 8090, path);
-    // Timer(const Duration(seconds: 3), () {
-    //   request.abort();
-    // });
     HttpClientResponse response =
-        await request.close().timeout(const Duration(seconds: 2));
+        await request.close().timeout(const Duration(seconds: 3));
     final stringData = await response.transform(utf8.decoder).join();
     // print(stringData.toString());
     return stringData.toString();
