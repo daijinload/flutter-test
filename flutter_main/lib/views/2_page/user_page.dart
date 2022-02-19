@@ -21,6 +21,9 @@ class UserPageState extends State<UserPage> {
     // サービスロケータパターンよりも型チェックが効くが見た目ごついし、
     // 実行関数とパラメータを渡さないと、何がどのパラメータで実行されている？
     // というログは取れないパターンとなる。
+    // コンテナ側にコードを追記していく作業は無くなるし、
+    // IDEでの関数コール検索ができ、使っている箇所の特定が容易になる。
+    // データのモック化まで考慮に入れると、execにモック処理を書く必要はあるかと。
     var resultbk = await wrap.exec(user_usecase.userInfo, () {
       return user_usecase.userInfo('');
     });
