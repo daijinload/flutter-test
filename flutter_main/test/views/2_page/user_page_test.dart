@@ -1,7 +1,7 @@
 import 'package:flutter_main/views/2_page/user_page.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-// flutter test test/views/page/user_page_test.dart
+// flutter test test/views/2_page/user_page_test.dart
 
 // widgetのテストツールでボタン押下時に非同期処理を使うと、
 // 非同期処理コールで止まってしまいデータが取得できない。
