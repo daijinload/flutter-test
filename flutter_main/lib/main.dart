@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'view/widget/aaa_widget.dart';
+import 'package:flutter_main/views/1_root_page/main_root_page.dart';
 
 void main() async {
-  runApp(const AaaWidget());
+  runApp(const MainRootPage());
 }
