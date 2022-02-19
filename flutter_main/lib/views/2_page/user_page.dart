@@ -15,7 +15,7 @@ class UserPageState extends State<UserPage> {
     // 起動時に書くべきだが、サンプルなので、ここでセットアップする
     container.setUp();
 
-    // コントローラを取得して、httpリクエストする
+    // 処理を取得して、httpリクエストする
     var result = await container.get("/user/info")("uuu");
     setState(() {
       str = result;

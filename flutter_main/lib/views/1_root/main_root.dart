@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_main/views/2_page/user_page.dart';
 
-class MainRootPage extends StatelessWidget {
-  const MainRootPage({Key? key}) : super(key: key);
+class MainRoot extends StatelessWidget {
+  const MainRoot({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
