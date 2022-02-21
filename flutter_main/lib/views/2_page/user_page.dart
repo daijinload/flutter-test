@@ -39,7 +39,8 @@ class UserPageState extends State<UserPage> {
       str = result;
     });
 
-    _showMyDialog(context);
+    // alertの表示！！
+    await _showMyDialog(context, '深刻なエラーが発生。。。しませんでした♪');
   }
 
   @override
@@ -71,26 +72,19 @@ class UserPageState extends State<UserPage> {
   }
 }
 
-Future<void> _showMyDialog(BuildContext context) async {
+Future<void> _showMyDialog(BuildContext ctx, String message) async {
   return showDialog<void>(
-    context: context,
+    context: ctx,
     barrierDismissible: false, // user must tap button!
-    builder: (BuildContext context) {
+    builder: (BuildContext ctx) {
       return AlertDialog(
-        title: const Text('AlertDialog Title'),
-        content: SingleChildScrollView(
-          child: ListBody(
-            children: const <Widget>[
-              Text('This is a demo alert dialog.'),
-              Text('Would you like to approve of this message?'),
-            ],
-          ),
-        ),
+        title: const Text('アラートダイアログタイトル'),
+        content: Text(message),
         actions: <Widget>[
           TextButton(
-            child: const Text('Approve'),
+            child: const Text('おっけー'),
             onPressed: () {
-              Navigator.of(context).pop();
+              Navigator.of(ctx).pop();
             },
           ),
         ],
