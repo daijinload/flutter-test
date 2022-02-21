@@ -27,6 +27,7 @@ class UserPageState extends State<UserPage> {
     var resultbk = await wrap.exec(user_usecase.userInfo, () {
       return user_usecase.userInfo('');
     });
+    // ignore: avoid_print
     print(resultbk);
 
     // サービスロケータパターン
@@ -37,6 +38,13 @@ class UserPageState extends State<UserPage> {
     var result = await container.get("/user/info")("uuu");
     setState(() {
       str = result;
+    });
+
+    // alertの表示！！
+    await _showMyDialog(context, '深刻なエラーが発生。。。しませんでした♪', () {
+      setState(() {
+        str = '';
+      });
     });
   }
 
@@ -67,4 +75,36 @@ class UserPageState extends State<UserPage> {
       ),
     );
   }
+}
+
+Future<void> _showMyDialog(
+    BuildContext ctx, String message, Function callback) async {
+  return showDialog<void>(
+    context: ctx,
+    barrierDismissible: false, // user must tap button!
+    builder: (BuildContext ctx) {
+      return AlertDialog(
+        title: const Text('アラートダイアログタイトル'),
+        content: Text(message),
+        actions: <Widget>[
+          TextButton(
+            child: const Text('文字そのまま'),
+            onPressed: () {
+              Navigator.of(ctx).pop();
+            },
+          ),
+          TextButton(
+            child: const Text('文字クリア'),
+            onPressed: () {
+              // キャンセル時にはcallbackを呼んでいないが、
+              // 何ボタンが押されたのか？を返すようにして、
+              // 全ボタンでcallbackを呼ぶようにしたほうがうまくいく気がする。
+              callback();
+              Navigator.of(ctx).pop();
+            },
+          ),
+        ],
+      );
+    },
+  );
 }
