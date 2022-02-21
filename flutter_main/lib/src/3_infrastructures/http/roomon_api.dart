@@ -18,7 +18,10 @@ Future<String> getApi(String path) async {
   } on TimeoutException catch (_) {
     // A timeout occurred.
     rethrow;
-  } on SocketException catch (_) {
+  // ignore: unused_catch_stack
+  } on SocketException catch (_err, _stackTrace) {
+    // print(err);
+    // print(stacktrace);
     // Other exception
     rethrow;
   } finally {

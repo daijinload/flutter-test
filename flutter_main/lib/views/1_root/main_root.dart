@@ -8,9 +8,15 @@ class MainRoot extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
+      theme:ThemeData(
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.red,
+          foregroundColor: Colors.white,
+        ),
       ),
+      // theme: ThemeData(
+      //   primarySwatch: Colors.red,
+      // ),
       home: const UserPage(title: 'Flutter Demo Home Page'),
     );
   }
