@@ -96,6 +96,9 @@ Future<void> _showMyDialog(
           TextButton(
             child: const Text('文字クリア'),
             onPressed: () {
+              // キャンセル時にはcallbackを呼んでいないが、
+              // 何ボタンが押されたのか？を返すようにして、
+              // 全ボタンでcallbackを呼ぶようにしたほうがうまくいく気がする。
               callback();
               Navigator.of(ctx).pop();
             },
