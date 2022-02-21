@@ -82,6 +82,12 @@ Future<void> _showMyDialog(BuildContext ctx, String message) async {
         content: Text(message),
         actions: <Widget>[
           TextButton(
+            child: const Text('あかん'),
+            onPressed: () {
+              Navigator.of(ctx).pop();
+            },
+          ),
+          TextButton(
             child: const Text('おっけー'),
             onPressed: () {
               Navigator.of(ctx).pop();
