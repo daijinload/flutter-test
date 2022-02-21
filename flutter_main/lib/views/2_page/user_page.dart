@@ -27,6 +27,7 @@ class UserPageState extends State<UserPage> {
     var resultbk = await wrap.exec(user_usecase.userInfo, () {
       return user_usecase.userInfo('');
     });
+    // ignore: avoid_print
     print(resultbk);
 
     // サービスロケータパターン
@@ -40,7 +41,11 @@ class UserPageState extends State<UserPage> {
     });
 
     // alertの表示！！
-    await _showMyDialog(context, '深刻なエラーが発生。。。しませんでした♪');
+    await _showMyDialog(context, '深刻なエラーが発生。。。しませんでした♪', () {
+      setState(() {
+        str = '';
+      });
+    });
   }
 
   @override
@@ -72,7 +77,8 @@ class UserPageState extends State<UserPage> {
   }
 }
 
-Future<void> _showMyDialog(BuildContext ctx, String message) async {
+Future<void> _showMyDialog(
+    BuildContext ctx, String message, Function callback) async {
   return showDialog<void>(
     context: ctx,
     barrierDismissible: false, // user must tap button!
@@ -82,14 +88,15 @@ Future<void> _showMyDialog(BuildContext ctx, String message) async {
         content: Text(message),
         actions: <Widget>[
           TextButton(
-            child: const Text('あかん'),
+            child: const Text('文字そのまま'),
             onPressed: () {
               Navigator.of(ctx).pop();
             },
           ),
           TextButton(
-            child: const Text('おっけー'),
+            child: const Text('文字クリア'),
             onPressed: () {
+              callback();
               Navigator.of(ctx).pop();
             },
           ),
