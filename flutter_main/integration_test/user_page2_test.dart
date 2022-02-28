@@ -14,9 +14,7 @@ void main() async {
 
   group('MyWidget', () {
     testWidgets('should display a string of text', (WidgetTester tester) async {
-      // final binding = IntegrationTestWidgetsFlutterBinding();
-
-      String platformName = '';
+      String platformName = 'web';
 
       if (!kIsWeb) {
         // Not required for the web. This is required prior to taking the screenshot.
@@ -27,8 +25,6 @@ void main() async {
         } else {
           platformName = "ios";
         }
-      } else {
-        platformName = "web";
       }
 
       await tester.pumpWidget(const MainRoot());
