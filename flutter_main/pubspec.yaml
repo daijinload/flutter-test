@@ -36,10 +36,8 @@ flutter:
     # Add assets from the images directory to the application.
     - assets/images/
 
-  fonts:
-    - family: azuki
-      fonts:
-        - asset: fonts/azuki.ttf
-    # - family: Noto
+  # ttf or otf only
+  # fonts:
+    # - family: hoge
     #   fonts:
-    #     - asset: fonts/NotoSans-Regular.ttf
+    #     - asset: fonts/hoge.ttf
