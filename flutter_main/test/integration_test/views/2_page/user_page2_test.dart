@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:integration_test/integration_test.dart';
 
 // flutter test -d linux test/integration_test/views/2_page/user_page2_test.dart
+
 void main() {
   // インテグレーションテスト（http通信ありのテスト）をする場合に必要。
   // 下記が無い状態のwidgetテストだと、http通信が全てstatus=400の空文字にモック化されてしまう。

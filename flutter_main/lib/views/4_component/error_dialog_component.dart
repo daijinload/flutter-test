@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-Future<void> showSystemErrorDialog(
-    BuildContext ctx, String message, [Function? onPressedOk]) async {
+Future<void> showSystemErrorDialog(BuildContext ctx, String message,
+    [Function? onPressedOk]) async {
   return await showDialog<void>(
     context: ctx,
     barrierDismissible: false,
@@ -15,7 +15,7 @@ Future<void> showSystemErrorDialog(
             onPressed: () {
               if (onPressedOk != null) {
                 onPressedOk();
-              }              
+              }
               Navigator.of(ctx).pop();
             },
           ),
