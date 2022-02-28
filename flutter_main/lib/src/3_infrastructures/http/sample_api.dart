@@ -9,9 +9,9 @@ Future<String> getUserInfo() async {
 }
 
 // local mode
-const host = '127.0.0.1';
+// const host = '127.0.0.1';
 // android emulator
-// const host = '10.0.2.2';
+const host = '10.0.2.2';
 const port = 8090;
 
 Future<String> getApi(String path) async {

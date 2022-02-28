@@ -14,6 +14,10 @@ class MainRoot extends StatelessWidget {
           backgroundColor: Colors.red,
           foregroundColor: Colors.white,
         ),
+        // 2022.02.28現在、Linuxデスクトップでは絵文字が豆腐になるので試しにフォントを
+        // 指定してみたが、Androidのエミュレータだと表示されているので、環境依存っぽい。
+        // とりあえず可愛いので、モチベーションを鑑みて、戻さず行くことにした。
+        fontFamily: 'azuki'
       ),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
