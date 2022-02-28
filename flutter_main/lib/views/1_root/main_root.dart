@@ -16,8 +16,9 @@ class MainRoot extends StatelessWidget {
           ),
           // 2022.02.28現在、Linuxデスクトップでは絵文字が豆腐になるので試しにフォントを
           // 指定してみたが、Androidのエミュレータだと表示されているので、環境依存っぽい。
-          // とりあえず可愛いので、モチベーションを鑑みて、戻さず行くことにした。
-          fontFamily: 'azuki'),
+          // フォントは組み込みは可能でも、再頒布禁止のものが多く、githubに上げる場合は気をつけること。
+          // fontFamily: 'hoge'
+      ),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
