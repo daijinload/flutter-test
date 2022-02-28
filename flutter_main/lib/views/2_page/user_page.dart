@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_main/src/1_usecases/container.dart' as container;
 import 'package:flutter_main/src/1_usecases/user_usecase.dart' as user_usecase;
 import 'package:flutter_main/src/1_usecases/wrap.dart' as wrap;
 
@@ -14,9 +13,6 @@ class UserPageState extends State<UserPage> {
   String str = "";
 
   Future<void> onPressedUserInfo() async {
-    // 起動時に書くべきだが、サンプルなので、ここでセットアップする
-    container.setUp();
-
     // デコレータパターン
     // サービスロケータパターンよりも型チェックが効くが見た目ごついし、
     // 実行関数とパラメータを渡さないと、何がどのパラメータで実行されている？
@@ -24,24 +20,15 @@ class UserPageState extends State<UserPage> {
     // コンテナ側にコードを追記していく作業は無くなるし、
     // IDEでの関数コール検索ができ、使っている箇所の特定が容易になる。
     // データのモック化まで考慮に入れると、execにモック処理を書く必要はあるかと。
-    var resultbk = await wrap.exec(user_usecase.userInfo, () {
+    var result = await wrap.exec(user_usecase.userInfo, () {
       return user_usecase.userInfo('');
     });
-    // ignore: avoid_print
-    print(resultbk);
-
-    // サービスロケータパターン
-    // 型チェックが効かなくなるが、ログなど見やすく出せると思われるパターン。
-    // コンテナ側にユースケースを作成するたびに追加しなければならず、大きくなる。
-    // リフレクションで取ってこようとしたが、それだと全てのコードが必要になりカリングができず、
-    // バイナリサイズが大きくなる的な話があったため、importを地道に書くことにした。
-    var result = await container.get("/user/info")("uuu");
     setState(() {
       str = result;
     });
 
-    // alertの表示！！
-    await _showMyDialog(context, '深刻なエラーが発生。。。しませんでした♪', () {
+    // // alertの表示！！
+    await _showMyDialog(context, 'アラートダイアログタイトル🌠', 'ここに、アラートメッセージが入ります。', () {
       setState(() {
         str = '';
       });
@@ -70,7 +57,7 @@ class UserPageState extends State<UserPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: onPressedUserInfo,
-        tooltip: 'Increment',
+        //tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
     );
@@ -78,28 +65,29 @@ class UserPageState extends State<UserPage> {
 }
 
 Future<void> _showMyDialog(
-    BuildContext ctx, String message, Function callback) async {
-  return showDialog<void>(
+    BuildContext ctx, String title, String message, Function onPressedOk,
+    [Function? onPressedNg]) async {
+  return await showDialog<void>(
     context: ctx,
     barrierDismissible: false, // user must tap button!
     builder: (BuildContext ctx) {
       return AlertDialog(
-        title: const Text('アラートダイアログタイトル'),
+        title: Text(title),
         content: Text(message),
         actions: <Widget>[
           TextButton(
             child: const Text('文字そのまま'),
             onPressed: () {
+              if (onPressedNg != null) {
+                onPressedNg();
+              }
               Navigator.of(ctx).pop();
             },
           ),
           TextButton(
             child: const Text('文字クリア'),
             onPressed: () {
-              // キャンセル時にはcallbackを呼んでいないが、
-              // 何ボタンが押されたのか？を返すようにして、
-              // 全ボタンでcallbackを呼ぶようにしたほうがうまくいく気がする。
-              callback();
+              onPressedOk();
               Navigator.of(ctx).pop();
             },
           ),
