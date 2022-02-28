@@ -27,7 +27,7 @@ class UserPageState extends State<UserPage> {
       str = result;
     });
 
-    // // alertの表示！！
+    // alertの表示！！
     await _showMyDialog(context, 'アラートダイアログタイトル🌠', 'ここに、アラートメッセージが入ります。', () {
       setState(() {
         str = '';

@@ -41,14 +41,15 @@ Future<Uint8List> downloadWasm(String fileName) async {
     HttpClientResponse response =
         await request.close().timeout(const Duration(seconds: 3));
     return await consolidateHttpClientResponseBytes(response);
-    
-    // final bytes = await consolidateHttpClientResponseBytes(response);
-    // Directory tempDir = await getTemporaryDirectory();
-    // String tempPath = tempDir.path;
-    // File file = File('$tempPath/$fileName');
-    // File file = File('/tmp/$fileName');
-    // await file.writeAsBytes(bytes);
   } finally {
     client.close();
   }
 }
+
+// ファイルをtmpに書き出すサンプル
+// final bytes = await consolidateHttpClientResponseBytes(response);
+// Directory tempDir = await getTemporaryDirectory();
+// String tempPath = tempDir.path;
+// File file = File('$tempPath/$fileName');
+// File file = File('/tmp/$fileName');
+// await file.writeAsBytes(bytes);
