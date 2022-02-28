@@ -1,10 +1,15 @@
 # flutter_main
 
+スクショを取りたいのであれば、公式ドキュメントを参考に、Androidエミュレータのセットアップをすること。
 
 ## setup
 
 ```bash
 flutter pub get
+
+# wasm セットアップ
+dart run wasm:setup
+
 flutter analyze
 flutter test
 

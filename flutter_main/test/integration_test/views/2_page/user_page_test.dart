@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_main/views/2_page/user_page.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -9,8 +10,24 @@ import 'package:flutter_test/flutter_test.dart';
 // 直ったら移行するのも良いかもしれないが、下記のやり方のほうが
 // より低レイヤでシンプルなので、移行しなくてもいいかなぁと思ったりもする。
 
+late UserPageState state;
+
+class MainRoot extends StatelessWidget {
+  const MainRoot({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    //
+    const home = UserPage(title: "");
+    state = home.createElement().state as UserPageState;
+    return const MaterialApp(
+      title: 'Flutter Demo',
+      home: home,
+    );
+  }
+}
+
 void main() {
-  late UserPageState state;
+  // late UserPageState state;
   setUpAll(() {
     state = const UserPage(title: "").createElement().state as UserPageState;
   });
@@ -20,7 +37,7 @@ void main() {
     });
     test('ボタンを押したら、json文字列が表示されること', () async {
       await state.onPressedUserInfo();
-      expect('{"name":"hello"}\n', state.str);
+      expect('{"name":"hello"}', state.str);
     });
   });
 }
