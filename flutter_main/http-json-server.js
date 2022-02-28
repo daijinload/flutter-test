@@ -4,10 +4,9 @@ const hostname = '127.0.0.1';
 const port = 8090;
 
 const server = http.createServer(async (req, res) => {
-  // 下記URLのみ、wasmを返す。
   if (req.url === '/wasm') {
+    // wasmをリクエストで返す場合のテストがしたくて入れた。現状は使ってない。
     const fPath = '/home/ahashi/src/git/flutter-test/flutter_main/assets/images/aaa.wasm'
-    // const file = await fs.readFile(fPath, "binary")
     const file = await fs.readFile(fPath)
     res.statusCode = 200;
     res.setHeader('Content-Type', 'application/wasm');
