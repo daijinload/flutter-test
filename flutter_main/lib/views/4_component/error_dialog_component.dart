@@ -10,13 +10,14 @@ Future<void> showSystemErrorDialog(BuildContext ctx, String message,
       return AlertDialog(
         title: const Text('システムエラー'),
         content: Text(message),
-        scrollable: true,        
+        scrollable: true,
         actions: <Widget>[
           TextButton(
             child: const Text('コピー'),
             onPressed: () {
-              Clipboard.setData(ClipboardData(text: message)).then((_){
-                  ScaffoldMessenger.of(ctx).showSnackBar(const SnackBar(content: Text("error messeges copied to clipboard")));
+              Clipboard.setData(ClipboardData(text: message)).then((_) {
+                ScaffoldMessenger.of(ctx).showSnackBar(const SnackBar(
+                    content: Text("error messeges copied to clipboard")));
               });
             },
           ),
