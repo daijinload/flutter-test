@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_main/src/1_usecases/user_usecase.dart' as user_usecase;
-import 'package:flutter_main/views/4_component/wrap_component.dart' as wrap;
+import 'package:flutter_main/views/3_template/wrap_template.dart' as wrap;
 
 class UserPage extends StatefulWidget {
   const UserPage({Key? key, required this.title}) : super(key: key);
