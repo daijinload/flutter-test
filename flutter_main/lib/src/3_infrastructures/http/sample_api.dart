@@ -23,6 +23,19 @@ Future<String> getApi(String path) async {
     final stringData = await response.transform(utf8.decoder).join();
     // print(stringData.toString());
     return stringData.toString();
+  } finally {
+    client.close();
+  }
+}
+Future<String> getApi2(String path) async {
+  var client = HttpClient();
+  try {
+    HttpClientRequest request = await client.get(host, port, path);
+    HttpClientResponse response =
+        await request.close().timeout(const Duration(seconds: 3));
+    final stringData = await response.transform(utf8.decoder).join();
+    // print(stringData.toString());
+    return stringData.toString();
   } on TimeoutException catch (_) {
     // A timeout occurred.
     rethrow;

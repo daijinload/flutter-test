@@ -20,7 +20,7 @@ class UserPageState extends State<UserPage> {
     // コンテナ側にコードを追記していく作業は無くなるし、
     // IDEでの関数コール検索ができ、使っている箇所の特定が容易になる。
     // データのモック化まで考慮に入れると、execにモック処理を書く必要はあるかと。
-    var result = await wrap.exec(context, user_usecase.userInfo, () {
+    var result = await wrap.exec(context, user_usecase.userInfo, () async {
       return user_usecase.userInfo('');
     });
     setState(() {
@@ -76,18 +76,18 @@ Future<void> _showMyDialog(
         content: Text(message),
         actions: <Widget>[
           TextButton(
+            child: const Text('文字クリア'),
+            onPressed: () {
+              onPressedOk();
+              Navigator.of(ctx).pop();
+            },
+          ),
+          TextButton(
             child: const Text('文字そのまま'),
             onPressed: () {
               if (onPressedNg != null) {
                 onPressedNg();
               }
-              Navigator.of(ctx).pop();
-            },
-          ),
-          TextButton(
-            child: const Text('文字クリア'),
-            onPressed: () {
-              onPressedOk();
               Navigator.of(ctx).pop();
             },
           ),
