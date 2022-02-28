@@ -10,14 +10,14 @@ class MainRoot extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-          appBarTheme: const AppBarTheme(
-            backgroundColor: Colors.red,
-            foregroundColor: Colors.white,
-          ),
-          // 2022.02.28現在、Linuxデスクトップでは絵文字が豆腐になるので試しにフォントを
-          // 指定してみたが、Androidのエミュレータだと表示されているので、環境依存っぽい。
-          // フォントは組み込みは可能でも、再頒布禁止のものが多く、githubに上げる場合は気をつけること。
-          // fontFamily: 'hoge'
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.red,
+          foregroundColor: Colors.white,
+        ),
+        // 2022.02.28現在、Linuxデスクトップでは絵文字が豆腐になるので試しにフォントを
+        // 指定してみたが、Androidのエミュレータだと表示されているので、環境依存っぽい。
+        // フォントは組み込みは可能でも、再頒布禁止のものが多く、githubに上げる場合は気をつけること。
+        // fontFamily: 'hoge'
       ),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
