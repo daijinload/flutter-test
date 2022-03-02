@@ -2,10 +2,23 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_main/views/4_component/error_dialog_component.dart';
 
+// 紙芝居動作時に使用するユースケースのmock処理。
+Map<Function, dynamic> mockUsecaseMap = {};
+void setMockUsecaseMap(Function func, dynamic value) {
+  mockUsecaseMap[func] = value;
+}
+
 Future<dynamic> exec(
     BuildContext ctx, Function usecaseFunc, Function callback) async {
   // ignore: avoid_print
   print("★★★★★: called function wrap関数: ${usecaseFunc.toString()}");
+
+  if (mockUsecaseMap.containsKey(usecaseFunc)) {
+    // ignore: avoid_print
+    print("★★★★★: called function mock value: ${mockUsecaseMap[usecaseFunc]}");
+    return mockUsecaseMap[usecaseFunc];
+  }
+
   try {
     // ignore: todo 紙芝居モードのときは、引数のユースケース関数をkeyにしたマップが値を返す仕組みにする予定。
     final result = await callback();
