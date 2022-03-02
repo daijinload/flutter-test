@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_main/views/1_root/main_root.dart';
 import 'package:flutter_main/src/3_infrastructures/flutter/story/usecase_mock.dart'
     as usecase_mock;
@@ -14,7 +17,12 @@ void main() async {
   // }
 
   // 紙芝居のために、ユースケースをモックする。
-  usecase_mock.exec();
+  await dotenv.load(fileName: 'assets/.env', mergeWith: Platform.environment);
+  // await dotenv.load(fileName: '../../.env', mergeWith: Platform.environment);
+
+  if (dotenv.env["STORY_MODE"] == 'true') {
+    usecase_mock.exec();
+  }
 
   runApp(const MainRoot());
 }
