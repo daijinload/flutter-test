@@ -16,10 +16,11 @@ void main() async {
   //   ErrorWidget.builder = (FlutterErrorDetails details) => SomethingWrong();
   // }
 
-  // 紙芝居のために、ユースケースをモックする。
+  // ignore: todo 最終的には使っている環境編数をクラス化して表現して、
+  // 起動時に表示するのと、内部を見ないと何を使っているのか？わからない状況を改善したい。
   await dotenv.load(fileName: 'assets/.env', mergeWith: Platform.environment);
-  // await dotenv.load(fileName: '../../.env', mergeWith: Platform.environment);
 
+  // 紙芝居のために、ユースケースをモックする。
   if (dotenv.env["STORY_MODE"] == 'true') {
     usecase_mock.exec();
   }
