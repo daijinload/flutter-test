@@ -5,10 +5,14 @@
 ## setup
 
 ```bash
+
+# 環境変数ファイルをコピーする（環境変数をコマンドラインで設定している場合、.envの値が上書きされます。）
+cp flutter_main/assets/.env.sample flutter_main/assets/.env
+
 flutter pub get
 
 # wasm セットアップ
-dart run wasm:setup
+# dart run wasm:setup
 
 flutter analyze
 flutter test
