@@ -1,43 +1,38 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_main/views/2_page/user_page.dart';
+import 'package:flutter_main/views/1_root/main_root.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter/material.dart';
+import 'package:integration_test/integration_test.dart';
 
-// flutter test test/views/2_page/user_page_test.dart
-
-// widgetのテストツールでボタン押下時に非同期処理を使うと、
-// 非同期処理コールで止まってしまいデータが取得できない。
-// 起動して動かすと非同期関数も実行できてデータも取得できているのでテストツール側のバグっぽい。
-// 直ったら移行するのも良いかもしれないが、下記のやり方のほうが
-// より低レイヤでシンプルなので、移行しなくてもいいかなぁと思ったりもする。
-
-late UserPageState state;
-
-class MainRoot extends StatelessWidget {
-  const MainRoot({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    //
-    const home = UserPage(title: "");
-    state = home.createElement().state as UserPageState;
-    return const MaterialApp(
-      title: 'Flutter Demo',
-      home: home,
-    );
-  }
-}
+// flutter test -d linux test/integration_test/views/2_page/user_page_test.dart
 
 void main() {
-  // late UserPageState state;
-  setUpAll(() {
-    state = const UserPage(title: "").createElement().state as UserPageState;
-  });
+  // インテグレーションテスト（http通信ありのテスト）をする場合に必要。
+  // 下記が無い状態のwidgetテストだと、http通信が全てstatus=400の空文字にモック化されてしまう。
+  // rootディレクトリに、integration_testフォルダを作ってテストを実行するとエミュレータなどが
+  // 起動してスクショが取れたりするが、毎度起動してテスト実施すると遅いので、
+  // 開発時はtestフォルダで実行するのが良いかと思う。
+  IntegrationTestWidgetsFlutterBinding.ensureInitialized();
+
   group('ユーザ情報表示テスト', () {
-    test('初回は空文字で表示すること', () {
-      expect("", state.str);
+    testWidgets('初回は空文字で表示すること', (WidgetTester tester) async {
+      await tester.pumpWidget(const MainRoot());
+      expect(find.text(''), findsOneWidget);
+      expect(find.text('{"name":"hello"}'), findsNothing);
     });
-    test('ボタンを押したら、json文字列が表示されること', () async {
-      await state.onPressedUserInfo();
-      expect('{"name":"hello"}', state.str);
+    testWidgets('ボタンを押したら、アラートが表示されて、アラートの文字そのままボタンを押すと、json文字列が表示されていること',
+        (WidgetTester tester) async {
+      await tester.pumpWidget(const MainRoot());
+      await tester.tap(find.byIcon(Icons.add));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('文字そのまま'));
+      await tester.pumpAndSettle();
+      expect(find.text('{"name":"hello"}'), findsOneWidget);
+
+      // for (var item in tester.allElements) {
+      //   print('-----------------------------------------------------------');
+      //   print(item.toString());
+      // }
     });
   });
 }
