@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:developer' as developer;
 import 'package:integration_test/integration_test_driver_extended.dart';
 
 Future<void> main() async {
@@ -12,6 +13,6 @@ Future<void> main() async {
       },
     );
   } catch (e) {
-    print('Error occured: $e');
+    developer.log('Error occured: $e');
   }
 }

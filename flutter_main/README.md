@@ -18,13 +18,21 @@ flutter analyze
 flutter test
 
 # 単品実行
-flutter test test/widget/aaa_widget_test.dart
+flutter test -d linux test/integration_test/views/2_page/user_page_test.dart
 
 # format
 flutter format lib/*
+flutter format test/*
+flutter format integration_test/*
 
 # おかしくなったらクリーンする
 flutter clean
+```
+
+## formatとテストをするチェック用スクリプト
+
+```bash
+./script/check.sh
 ```
 
 ## json server
