@@ -5,7 +5,7 @@ import 'package:integration_test/integration_test.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'dart:io';
 
-// flutter drive -d emulator --screenshot=/tmp/aaa --driver=test_driver/integration_test.dart --target=integration_test/user_page2_test.dart
+// flutter drive -d emulator --screenshot=/tmp/aaa --driver=test_driver/integration_test.dart --target=integration_test/user_page_test.dart
 
 void main() async {
   // スクショ型のインテグレーションテスト（http通信ありのテスト）をする場合に必要。

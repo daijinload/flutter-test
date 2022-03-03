@@ -22,9 +22,17 @@ flutter test test/widget/aaa_widget_test.dart
 
 # format
 flutter format lib/*
+flutter format test/*
+flutter format integration_test/*
 
 # おかしくなったらクリーンする
 flutter clean
+```
+
+## formatとテストをするチェック用スクリプト
+
+```bash
+./script/check.sh
 ```
 
 ## json server
