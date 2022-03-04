@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_main/views/2_page/aa_page.dart';
+import 'package:flutter_main/views/2_page/main_page.dart';
 import 'package:flutter_main/views/2_page/bb_page.dart';
 import 'package:flutter_main/views/2_page/user_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -29,22 +30,11 @@ class MainRoot extends StatelessWidget {
       supportedLocales: const [
         Locale('ja', ''),
       ],
-      // initialRoute: "fakeSplash",
-      // onGenerateRoute: (RouteSettings setting) {
-      //   if (setting.name == "fakeSplash")
-      //     return FakeSplashRoute();
-      //   else
-      //     return RealRout(setting);
-      // },
-      // theme: ThemeData(
-      //   primarySwatch: Colors.red,
-      // ),
-      // home: const UserPage(title: 'Flutter Demo Home Page'),
-      home: const AaPage(title: 'サンプルAページ!!'),
+      home: const MainPage(title: 'サンプルページへのリンクページ'),
       routes: <String, WidgetBuilder> {
-        '/a': (BuildContext context) => const AaPage(title: 'page A'),
-        '/b': (BuildContext context) => const BbPage(title: 'page B'),
-        '/user/info': (BuildContext context) => const UserPage(title: 'page user info'),
+        '/a': (BuildContext context) => const AaPage(title: 'A画面'),
+        '/b': (BuildContext context) => const BbPage(title: 'B画面'),
+        '/user/info': (BuildContext context) => const UserPage(title: 'ユーザ画面'),
       },
     );
   }

@@ -24,7 +24,7 @@ class AaPageState extends State<AaPage> {
             OutlinedButton(
               onPressed: () {
                 setState(() {
-                  str = 'ボタンが押されました。';
+                  str = 'ボタンが押されました🌠🌠🌠';
                 });
                 debugPrint('ボタン1 clicked');
               },
