@@ -37,7 +37,7 @@ class AaPageState extends State<AaPage> {
                   primary: Colors.green,
                 ),
                 onPressed: () {
-                  debugPrint('ボタン2 clicked');
+                  Navigator.pushNamed(context, '/b');
                 },
                 child: const Text('次の画面へ')),
           ],

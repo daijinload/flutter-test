@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_main/views/2_page/aa_page.dart';
+import 'package:flutter_main/views/2_page/bb_page.dart';
 import 'package:flutter_main/views/2_page/user_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
@@ -40,6 +41,11 @@ class MainRoot extends StatelessWidget {
       // ),
       // home: const UserPage(title: 'Flutter Demo Home Page'),
       home: const AaPage(title: 'サンプルAページ!!'),
+      routes: <String, WidgetBuilder> {
+        '/a': (BuildContext context) => const AaPage(title: 'page A'),
+        '/b': (BuildContext context) => const BbPage(title: 'page B'),
+        '/user/info': (BuildContext context) => const UserPage(title: 'page user info'),
+      },
     );
   }
 }
