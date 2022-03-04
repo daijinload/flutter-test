@@ -5,6 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_main/views/1_root/main_root.dart';
 import 'package:flutter_main/src/3_infrastructures/flutter/story/usecase_mock.dart'
     as usecase_mock;
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 void main() async {
   // ignore: todo レンダリング側のエラーを補足するかどうか？検討する。
@@ -18,7 +19,11 @@ void main() async {
 
   // ignore: todo 最終的には使っている環境編数をクラス化して表現して、
   // 起動時に表示するのと、内部を見ないと何を使っているのか？わからない状況を改善したい。
-  await dotenv.load(fileName: 'assets/.env', mergeWith: Platform.environment);
+  if (kIsWeb) {
+    await dotenv.load(fileName: 'assets/.env');
+  } else {
+    await dotenv.load(fileName: 'assets/.env', mergeWith: Platform.environment);
+  }
 
   // 紙芝居のために、ユースケースをモックする。
   if (dotenv.env["STORY_MODE"] == 'true') {
