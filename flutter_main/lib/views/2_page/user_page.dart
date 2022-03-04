@@ -3,8 +3,7 @@ import 'package:flutter_main/src/1_usecases/user_usecase.dart' as user_usecase;
 import 'package:flutter_main/views/3_template/wrap_template.dart' as wrap;
 
 class UserPage extends StatefulWidget {
-  const UserPage({Key? key, required this.title}) : super(key: key);
-  final String title;
+  const UserPage({Key? key}) : super(key: key);
   @override
   State<UserPage> createState() => UserPageState();
 }
@@ -39,7 +38,7 @@ class UserPageState extends State<UserPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text('ユーザ画面'),
       ),
       body: Center(
         child: Column(

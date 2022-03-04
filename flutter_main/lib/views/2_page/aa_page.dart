@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AaPage extends StatefulWidget {
-  const AaPage({Key? key, required this.title}) : super(key: key);
-  final String title;
+  const AaPage({Key? key}) : super(key: key);
   @override
   State<AaPage> createState() => AaPageState();
 }
@@ -13,7 +12,7 @@ class AaPageState extends State<AaPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: const Text('A画面'),
       ),
       body: Center(
         child: Column(

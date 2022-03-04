@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
 class BbPage extends StatelessWidget {
-  const BbPage({Key? key, required this.title}) : super(key: key);
-  final String title;
+  const BbPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: const Text('B画面'),
       ),
       body: Center(
         child: Column(

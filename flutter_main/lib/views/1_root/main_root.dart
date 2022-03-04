@@ -10,32 +10,37 @@ class MainRoot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.red,
-          foregroundColor: Colors.white,
-        ),
-        // 2022.02.28現在、Linuxデスクトップでは絵文字が豆腐になるので試しにフォントを
-        // 指定してみたが、Androidのエミュレータだと表示されているので、環境依存っぽい。
-        // フォントは組み込みは可能でも、再頒布禁止のものが多く、githubに上げる場合は気をつけること。
-        // fontFamily: 'hoge'
-      ),
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('ja', ''),
-      ],
-      home: const MainPage(title: 'サンプルページへのリンクページ'),
-      routes: <String, WidgetBuilder> {
-        '/a': (BuildContext context) => const AaPage(title: 'A画面'),
-        '/b': (BuildContext context) => const BbPage(title: 'B画面'),
-        '/user/info': (BuildContext context) => const UserPage(title: 'ユーザ画面'),
-      },
-    );
+    return createMaterialApp(context, const MainPage());
   }
+}
+
+// テキストボタンを作成する
+MaterialApp createMaterialApp(BuildContext context, Widget mainWidget) {
+  return MaterialApp(
+    title: 'Flutter Demo',
+    theme: ThemeData(
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.red,
+        foregroundColor: Colors.white,
+      ),
+      // 2022.02.28現在、Linuxデスクトップでは絵文字が豆腐になるので試しにフォントを
+      // 指定してみたが、Androidのエミュレータだと表示されているので、環境依存っぽい。
+      // フォントは組み込みは可能でも、再頒布禁止のものが多く、githubに上げる場合は気をつけること。
+      // fontFamily: 'hoge'
+    ),
+    localizationsDelegates: const [
+      GlobalMaterialLocalizations.delegate,
+      GlobalWidgetsLocalizations.delegate,
+      GlobalCupertinoLocalizations.delegate,
+    ],
+    supportedLocales: const [
+      Locale('ja', ''),
+    ],
+    home: mainWidget,
+    routes: <String, WidgetBuilder>{
+      '/a': (BuildContext context) => const AaPage(),
+      '/b': (BuildContext context) => const BbPage(),
+      '/user/info': (BuildContext context) => const UserPage(),
+    },
+  );
 }

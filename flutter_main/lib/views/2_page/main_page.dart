@@ -2,13 +2,12 @@ import 'package:flutter/material.dart';
 
 // メインページ　主に各ページのリンクを置いておくだけ。
 class MainPage extends StatelessWidget {
-  const MainPage({Key? key, required this.title}) : super(key: key);
-  final String title;
+  const MainPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: const Text('サンプルページへのリンクページ'),
       ),
       body: Center(
         child: Column(
@@ -29,13 +28,13 @@ class MainPage extends StatelessWidget {
 // テキストボタンを作成する
 TextButton createTextButton(BuildContext context, String path, String txt) {
   return TextButton(
-      style: TextButton.styleFrom(
-        textStyle: const TextStyle(fontSize: 20),
-        primary: Colors.green,
-      ),
-      onPressed: () {
-        Navigator.pushNamed(context, path);
-      },
-      child: Text(txt),
+    style: TextButton.styleFrom(
+      textStyle: const TextStyle(fontSize: 20),
+      primary: Colors.green,
+    ),
+    onPressed: () {
+      Navigator.pushNamed(context, path);
+    },
+    child: Text(txt),
   );
 }
