@@ -1,4 +1,5 @@
 import 'package:flutter_main/views/1_root/main_root.dart';
+import 'package:flutter_main/views/2_page/user_page.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
 import 'package:integration_test/integration_test.dart';
@@ -14,14 +15,21 @@ void main() {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
   group('ユーザ情報表示テスト', () {
+    setUp(() {});
     testWidgets('初回は空文字で表示すること', (WidgetTester tester) async {
-      await tester.pumpWidget(const MainRoot());
+      await tester.pumpWidget(Builder(builder: (BuildContext context) {
+        return createMaterialApp(context, const UserPage());
+      }));
+
       expect(find.text(''), findsOneWidget);
       expect(find.text('{"name":"hello"}'), findsNothing);
     });
     testWidgets('ボタンを押したら、アラートが表示されて、アラートの文字そのままボタンを押すと、json文字列が表示されていること',
         (WidgetTester tester) async {
-      await tester.pumpWidget(const MainRoot());
+      await tester.pumpWidget(Builder(builder: (BuildContext context) {
+        return createMaterialApp(context, const UserPage());
+      }));
+
       await tester.tap(find.byIcon(Icons.add));
       await tester.pumpAndSettle();
 
