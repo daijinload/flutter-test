@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// メインページ　主に各ページのリンクを置いておくだけ。
 class MainPage extends StatelessWidget {
   const MainPage({Key? key, required this.title}) : super(key: key);
   final String title;
@@ -11,9 +12,8 @@ class MainPage extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const SizedBox(height: 30),
             createTextButton(context, '/a', 'a画面へ'),
             const SizedBox(height: 30),
             createTextButton(context, '/b', 'b画面へ'),
@@ -26,7 +26,7 @@ class MainPage extends StatelessWidget {
   }
 }
 
-// テキストボタンの作成をする
+// テキストボタンを作成する
 TextButton createTextButton(BuildContext context, String path, String txt) {
   return TextButton(
       style: TextButton.styleFrom(
