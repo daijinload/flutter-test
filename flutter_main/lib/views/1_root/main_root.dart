@@ -28,6 +28,13 @@ class MainRoot extends StatelessWidget {
       supportedLocales: const [
         Locale('ja', ''),
       ],
+      // initialRoute: "fakeSplash",
+      // onGenerateRoute: (RouteSettings setting) {
+      //   if (setting.name == "fakeSplash")
+      //     return FakeSplashRoute();
+      //   else
+      //     return RealRout(setting);
+      // },
       // theme: ThemeData(
       //   primarySwatch: Colors.red,
       // ),
