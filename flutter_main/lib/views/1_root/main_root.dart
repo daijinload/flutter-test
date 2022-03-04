@@ -14,8 +14,8 @@ class MainRoot extends StatelessWidget {
   }
 }
 
-// テキストボタンを作成する
-MaterialApp createMaterialApp(BuildContext context, Widget mainWidget) {
+// テスト側でもMaterialAppを作成したいので、メソッド分割している
+MaterialApp createMaterialApp(BuildContext context, Widget homeWidget) {
   return MaterialApp(
     title: 'Flutter Demo',
     theme: ThemeData(
@@ -36,7 +36,7 @@ MaterialApp createMaterialApp(BuildContext context, Widget mainWidget) {
     supportedLocales: const [
       Locale('ja', ''),
     ],
-    home: mainWidget,
+    home: homeWidget,
     routes: <String, WidgetBuilder>{
       '/a': (BuildContext context) => const AaPage(),
       '/b': (BuildContext context) => const BbPage(),

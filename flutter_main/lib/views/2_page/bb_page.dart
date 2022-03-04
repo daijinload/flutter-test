@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_main/views/4_component/text_button.dart';
 
 class BbPage extends StatelessWidget {
   const BbPage({Key? key}) : super(key: key);
@@ -11,8 +12,10 @@ class BbPage extends StatelessWidget {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text('Bページ!!'),
+          children: <Widget>[
+            const Text('Bページ!!'),
+            const SizedBox(height: 30),
+            createTextButton(context, '/', 'トップへ'),
           ],
         ),
       ),

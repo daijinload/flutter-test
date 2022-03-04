@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_main/views/4_component/text_button.dart';
 
 // メインページ　主に各ページのリンクを置いておくだけ。
 class MainPage extends StatelessWidget {
@@ -23,18 +24,4 @@ class MainPage extends StatelessWidget {
       ),
     );
   }
-}
-
-// テキストボタンを作成する
-TextButton createTextButton(BuildContext context, String path, String txt) {
-  return TextButton(
-    style: TextButton.styleFrom(
-      textStyle: const TextStyle(fontSize: 20),
-      primary: Colors.green,
-    ),
-    onPressed: () {
-      Navigator.pushNamed(context, path);
-    },
-    child: Text(txt),
-  );
 }

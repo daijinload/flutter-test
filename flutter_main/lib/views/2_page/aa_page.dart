@@ -38,7 +38,7 @@ class AaPageState extends State<AaPage> {
                 onPressed: () {
                   Navigator.pushNamed(context, '/b');
                 },
-                child: const Text('次の画面へ')),
+                child: const Text('B画面へ')),
           ],
         ),
       ),
