@@ -6,4 +6,6 @@ flutter format lib/*
 flutter format test/*
 flutter format integration_test/*
 
+flutter analyze
+
 flutter test
