@@ -79,7 +79,7 @@ class HomePageState extends State<HomePage> {
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(4),
-            color: Color(int.parse("FF" "686869", radix: 16))),
+            color: const Color.fromARGB(255, 104, 104, 105)),
         margin: const EdgeInsets.only(left: 20, right: 20, bottom: 24),
         height: 50,
         child: TextButton(
