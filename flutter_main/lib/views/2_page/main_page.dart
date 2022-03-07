@@ -19,6 +19,8 @@ class MainPage extends StatelessWidget {
             createTextButton(context, '/b', 'b画面へ'),
             const SizedBox(height: 30),
             createTextButton(context, '/user/info', 'ユーザ画面へ'),
+            const SizedBox(height: 30),
+            createTextButton(context, '/user/home', 'ホーム画面へ'),
           ],
         ),
       ),
