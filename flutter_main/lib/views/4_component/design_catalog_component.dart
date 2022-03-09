@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../3_template/custum_colors.dart';
-
 Column createCatalogBlock(
     {required List<Widget> children,
     required String title,
