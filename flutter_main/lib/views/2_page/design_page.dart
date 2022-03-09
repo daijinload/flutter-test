@@ -3,7 +3,6 @@ import 'package:flutter_main/views/4_component/text_button.dart';
 import 'package:flutter_main/views/4_component/design_catalog_component.dart';
 import 'package:flutter_main/views/3_template/custum_colors.dart';
 
-//ホーム画面
 class DesignPage extends StatefulWidget {
   const DesignPage({Key? key}) : super(key: key);
   @override

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+// カタログを作成する時に使用
 Column createCatalogBlock(
     {required List<Widget> children,
     required String title,
+    // 開発時、importパスをコピーするときに使用
     String? importPath}) {
   return Column(
     children: [
@@ -22,7 +24,10 @@ Column createCatalogBlock(
 }
 
 Column createColorBlock(
-    {required String title, required Color color, String? props}) {
+    {required String title,
+    required Color color,
+    // 開発時、コピペしやすいように使用
+    String? props}) {
   return Column(
     children: [
       Container(

@@ -3,7 +3,7 @@ import 'package:flutter_main/views/4_component/text_button.dart';
 import 'package:flutter_main/views/4_component/bottom_navigation_bar_layout.dart';
 import 'package:flutter_main/views/3_template/custum_colors.dart';
 
-//ホーム画面
+// ホーム画面
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
   @override
