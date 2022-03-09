@@ -15,7 +15,7 @@ TextButton createTextButton(BuildContext context, String path, String txt) {
 }
 
 ElevatedButton createActionButton(
-    {void Function()? onPressed, required String txt, bool outlined = false}) {
+    {void Function()? onPressed, required String txt}) {
   return ElevatedButton(
     onPressed: onPressed,
     child: Text(txt),
