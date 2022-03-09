@@ -4,6 +4,7 @@ import 'package:flutter_main/views/2_page/main_page.dart';
 import 'package:flutter_main/views/2_page/bb_page.dart';
 import 'package:flutter_main/views/2_page/user_page.dart';
 import 'package:flutter_main/views/2_page/home_page.dart';
+import 'package:flutter_main/views/2_page/design_page.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 class MainRoot extends StatelessWidget {
@@ -43,6 +44,7 @@ MaterialApp createMaterialApp(BuildContext context, Widget homeWidget) {
       '/b': (BuildContext context) => const BbPage(),
       '/user/info': (BuildContext context) => const UserPage(),
       '/user/home': (BuildContext context) => const HomePage(),
+      '/designs': (BuildContext context) => const DesignPage()
     },
   );
 }
