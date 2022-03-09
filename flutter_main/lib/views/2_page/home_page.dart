@@ -53,7 +53,7 @@ class HomePageState extends State<HomePage> {
               ]),
             ]),
             Container(
-                margin: const EdgeInsets.only(left: 20, right: 20),
+                margin: const EdgeInsets.only(left: 20, right: 20, bottom: 16),
                 child: const Text.rich(TextSpan(
                     style: TextStyle(color: CustumColors.grayHeavy),
                     children: [
