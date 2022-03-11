@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_main/views/4_component/encircled_number.dart';
 import 'package:flutter_main/views/3_template/custum_colors.dart';
 
+// ステッパーのアクションボタンをなくしたもの
+// https://api.flutter.dev/flutter/material/Stepper-class.html
 List<Column> createStepperIndicatorVertical({required List<Widget> children}) {
   return children
       .asMap()
       .entries
       .map((e) => (Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
