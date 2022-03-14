@@ -18,7 +18,7 @@ void main() {
       }));
       await tester.tap(find.text('二次元バーコードを読み込む'));
       await tester.pumpAndSettle();
-// 遷移後、ヘッダーの文字が変化することを確認
+      // 遷移後、ヘッダーの文字が変化することを確認
       expect(find.text('機器の設定'), findsOneWidget);
     });
   });
