@@ -20,6 +20,14 @@ class DesignPageState extends State<DesignPage> {
         ),
         body: Center(
             child: Column(children: [
+          Container(
+            margin: const EdgeInsets.all(30),
+            child: const Text("使用方法"),
+          ),
+          Container(
+            margin: const EdgeInsets.all(10),
+            child: const Text("コンポーネント名を押すと、パスがクリップボードにコピーされます."),
+          ),
           createCatalogBlock(
               title: "色一覧",
               children: [

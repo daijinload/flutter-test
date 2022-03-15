@@ -2,8 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_main/views/4_component/encircled_number.dart';
 import 'package:flutter_main/views/3_template/custum_colors.dart';
 
-// ステッパーのアクションボタンをなくしたもの
-// https://api.flutter.dev/flutter/material/Stepper-class.html
+/// ### 概要
+///
+/// - 進捗状況をステップ数として表示できるようにした
+/// - [stepper](https://api.flutter.dev/flutter/material/Stepper-class.html)からContinue,Cancelボタンをなくした
+///
+/// ### 目的
+/// - ステップ数表示と、次ステップに進む表示と操作を分離したいので作成
+///
+/// ### 使用例
+///
+/// - 導入前確認画面_共用玄関
+
 List<Column> createStepperIndicatorVertical({required List<Widget> children}) {
   return children
       .asMap()
