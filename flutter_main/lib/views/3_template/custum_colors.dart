@@ -6,4 +6,5 @@ class CustumColors {
   static const gray = Color.fromARGB(255, 104, 104, 105);
   static const grayIcon = Color.fromARGB(255, 138, 138, 138);
   static const grayLight = Color.fromARGB(255, 163, 163, 164);
+  static const grayBg = Color.fromARGB(255, 220, 220, 221);
 }

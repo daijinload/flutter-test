@@ -1,7 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-// カタログを作成する時に使用
+/// ### 概要
+///
+/// - カタログを作成する時に使用
+///
+/// ### 目的
+///
+/// - デザイン一覧画面でコンポーネントのタイトルを付けやすくするため
+///
+/// ### 利用例
+///
+/// - デザイン一覧画面
+///
+/// ### 備考
+///
+/// - 引数のimportPathには、タイトルがクリックされたときにクリップボードにコピーされるテキストを与える
+///
+
 Column createCatalogBlock(
     {required List<Widget> children,
     required String title,
@@ -22,6 +38,23 @@ Column createCatalogBlock(
     ],
   );
 }
+
+/// ### 概要
+///
+/// - 引数で与えられた色情報を元に色を円形に表示する
+///
+/// ### 目的
+///
+/// - デザイン一覧画面で色を簡単に表示するために作成
+///
+/// ### 利用例
+///
+/// - デザイン一覧画面
+///
+/// ### 備考
+///
+/// - 引数のpropsには、色がクリックされたときにクリップボードにコピーしたいテキストを与える
+///
 
 Column createColorBlock(
     {required String title,

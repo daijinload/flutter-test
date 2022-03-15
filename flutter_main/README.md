@@ -1,6 +1,6 @@
 # flutter_main
 
-スクショを取りたいのであれば、公式ドキュメントを参考に、Androidエミュレータのセットアップをすること。
+スクショを取りたいのであれば、公式ドキュメントを参考に、Android エミュレータのセットアップをすること。
 
 ## setup
 
@@ -29,7 +29,7 @@ flutter format integration_test/*
 flutter clean
 ```
 
-## formatとテストをするチェック用スクリプト
+## format とテストをするチェック用スクリプト
 
 ```bash
 ./script/check.sh
@@ -40,3 +40,14 @@ flutter clean
 ```bash
 node http-json-server.js
 ```
+
+## デザイン一覧画面について
+
+### 概要
+
+- 再利用可能なコンポーネントがカタログ形式で見ることが可能
+- コンポーネントの使用方法とその意図を第三者が理解しやすいように作成
+
+### 機能
+
+- コンポーネント名を押すと import path がクリップボードにコピーされる

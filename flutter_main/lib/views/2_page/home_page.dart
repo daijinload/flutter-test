@@ -78,7 +78,9 @@ class HomePageState extends State<HomePage> {
               margin: const EdgeInsets.only(bottom: 16),
               child: SizedBox(
                 child: createActionButton(
-                    txt: "二次元バーコードを読み込む", onPressed: () => {}),
+                    txt: "二次元バーコードを読み込む",
+                    onPressed: () =>
+                        {Navigator.pushNamed(context, "/device/setting")}),
                 height: 50,
                 width: double.infinity,
               )),
