@@ -3,11 +3,11 @@ targets:
     sources:
       - lib/**
       - graphql/client/**
-      - graphql/device_schema.gql
+      - graphql/server.gql
     builders:
       artemis:
         options:
           schema_mapping:
-            - schema: graphql/device_schema.gql
+            - schema: graphql/server.gql
               queries_glob: graphql/client/test.gql
               output: lib/src/3_infrastructures/graphql/generated/test.dart
