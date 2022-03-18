@@ -1,0 +1,13 @@
+targets:
+  $default:
+    sources:
+      - lib/**
+      - graphql/client/**
+      - graphql/server.gql
+    builders:
+      artemis:
+        options:
+          schema_mapping:
+            - schema: graphql/server.gql
+              queries_glob: graphql/client/test.gql
+              output: lib/src/3_infrastructures/graphql/generated/test.dart

@@ -17,6 +17,11 @@ dependencies:
     sdk: flutter
   http: ^0.13.4
   url_strategy: ^0.2.0
+  json_annotation: ^4.3.0
+  json_serializable: ^6.0.1
+  equatable: ^2.0.3
+  gql: ^0.13.1-alpha
+  artemis: '>=7.0.0 <8.0.0' # only if you're using ArtemisClient!
 
 dev_dependencies:
   flutter_test:
@@ -25,8 +30,8 @@ dev_dependencies:
     sdk: flutter
   flutter_driver:
     sdk: flutter
-
   flutter_lints: ^1.0.0
+  build_runner: ^2.1.4
 
 flutter:
   uses-material-design: true
