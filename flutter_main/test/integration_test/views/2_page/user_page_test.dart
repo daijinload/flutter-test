@@ -35,7 +35,7 @@ void main() {
 
       await tester.tap(find.text('文字そのまま'));
       await tester.pumpAndSettle();
-      expect(find.text('{"name":"hello"}'), findsOneWidget);
+      expect(find.text('Mock文字列を返す!!'), findsOneWidget);
 
       // for (var item in tester.allElements) {
       //   print('-----------------------------------------------------------');

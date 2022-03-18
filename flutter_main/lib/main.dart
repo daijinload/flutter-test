@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:artemis/artemis.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_main/views/1_root/main_root.dart';

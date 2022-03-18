@@ -1,4 +1,3 @@
-
 import 'package:artemis/artemis.dart';
 import 'package:flutter_main/src/3_infrastructures/graphql/generated/test.dart';
 
@@ -12,10 +11,13 @@ Future<String> echo() async {
     switch (first.extensions?['code']) {
       case 'BAD_USER_INPUT':
         // TODO どこかで独自エラーを定義して使いたい
-        throw Exception(first.message + '\n' + first.extensions!['exception'].toString() + '\n\n');
+        throw Exception(first.message +
+            '\n' +
+            first.extensions!['exception'].toString() +
+            '\n\n');
       default:
     }
   }
-  
+
   return response.data!.echo!.id;
 }

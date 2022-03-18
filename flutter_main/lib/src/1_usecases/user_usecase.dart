@@ -1,4 +1,5 @@
-import 'package:flutter_main/src/3_infrastructures/graphql/test_gql_api.dart' as test_gql_api;
+import 'package:flutter_main/src/3_infrastructures/graphql/test_gql_api.dart'
+    as test_gql_api;
 import 'package:flutter_main/src/3_infrastructures/http/sample_api.dart'
     as sample_api;
 
