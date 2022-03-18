@@ -26,7 +26,7 @@ void main() {
       }));
 
       expect(find.text(''), findsOneWidget);
-      expect(find.text('Mock文字列を返す!!'), findsNothing);
+      expect(find.text('Mock文字列!!'), findsNothing);
     });
     testWidgets('ボタンを押したら、アラートが表示されて、アラートの文字そのままボタンを押すと、json文字列が表示されていること',
         (WidgetTester tester) async {
@@ -39,7 +39,7 @@ void main() {
 
       await tester.tap(find.text('文字そのまま'));
       await tester.pumpAndSettle();
-      expect(find.text('MockString'), findsOneWidget);
+      expect(find.text('Mock文字列!!'), findsOneWidget);
 
       // for (var item in tester.allElements) {
       //   print('-----------------------------------------------------------');
