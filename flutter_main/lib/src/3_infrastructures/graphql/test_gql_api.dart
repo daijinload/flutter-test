@@ -8,7 +8,7 @@ Future<String> echo() async {
   final echoQuery = EchoQuery();
   final response = await client.execute(echoQuery);
   if (response.hasErrors) {
-    // TODO どこかで
+    // TODO どこかで独自エラーを定義して使いたい
     throw Exception(response.errors!.first.message);
   }
   
