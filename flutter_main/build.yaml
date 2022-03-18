@@ -10,4 +10,4 @@ targets:
           schema_mapping:
             - schema: graphql/device_schema.gql
               queries_glob: graphql/client/test.gql
-              output: lib/aaa.dart
+              output: lib/src/3_infrastructures/graphql/generated/test.dart

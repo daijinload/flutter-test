@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // @dart=2.12
 
-part of 'aaa.graphql.dart';
+part of 'test.graphql.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator

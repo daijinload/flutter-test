@@ -5,7 +5,7 @@ import 'package:artemis/artemis.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:equatable/equatable.dart';
 import 'package:gql/ast.dart';
-part 'aaa.graphql.g.dart';
+part 'test.graphql.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Echo$Query$IdResult extends JsonSerializable with EquatableMixin {

@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:artemis/artemis.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_main/aaa.graphql.dart';
 import 'package:flutter_main/views/1_root/main_root.dart';
 import 'package:flutter_main/src/3_infrastructures/flutter/story/usecase_mock.dart'
     as usecase_mock;
@@ -19,14 +18,6 @@ void main() async {
   // if (kReleaseMode) {
   //   ErrorWidget.builder = (FlutterErrorDetails details) => SomethingWrong();
   // }
-
-  final client = ArtemisClient('http://localhost:8040/gql/device');
-  final response = await client.execute(EchoQuery());
-  print(response);
-  print(response.data?.echo);
-  print(response.data);
-  print(response.data?.echo?.props);
-  print(response.data?.echo?.id);
 
   // webで起動した場合に、/#/hogeというパスが、/hogeとシンプルになる。
   setPathUrlStrategy();
