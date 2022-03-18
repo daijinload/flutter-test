@@ -3,6 +3,8 @@ import 'package:flutter_main/views/2_page/user_page.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter/material.dart';
 import 'package:integration_test/integration_test.dart';
+import 'package:flutter_main/src/3_infrastructures/flutter/story/usecase_mock.dart'
+    as usecase_mock;
 
 // flutter test -d linux test/integration_test/views/2_page/user_page_test.dart
 
@@ -14,15 +16,17 @@ void main() {
   // 開発時はtestフォルダで実行するのが良いかと思う。
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
 
+  // API起動しないとエラーになるため、面倒なのでモックで動かす。
+  usecase_mock.exec();
+
   group('ユーザ情報表示テスト', () {
-    setUp(() {});
     testWidgets('初回は空文字で表示すること', (WidgetTester tester) async {
       await tester.pumpWidget(Builder(builder: (BuildContext context) {
         return createMaterialApp(context, const UserPage());
       }));
 
       expect(find.text(''), findsOneWidget);
-      expect(find.text('{"name":"hello"}'), findsNothing);
+      expect(find.text('Mock文字列を返す!!'), findsNothing);
     });
     testWidgets('ボタンを押したら、アラートが表示されて、アラートの文字そのままボタンを押すと、json文字列が表示されていること',
         (WidgetTester tester) async {
@@ -35,7 +39,7 @@ void main() {
 
       await tester.tap(find.text('文字そのまま'));
       await tester.pumpAndSettle();
-      expect(find.text('Mock文字列を返す!!'), findsOneWidget);
+      expect(find.text('MockString'), findsOneWidget);
 
       // for (var item in tester.allElements) {
       //   print('-----------------------------------------------------------');
