@@ -1,0 +1,9 @@
+type Query {
+  "シンプルなエコーコール"
+  echo: IdResult
+}
+
+type Mutation {
+  "無いとエラーになるのでとりあえず入れる。シンプルなエコーコール"
+  echom: IdResult
+}

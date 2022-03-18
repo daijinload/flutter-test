@@ -1,0 +1,31 @@
+type Query {
+  "シンプルなエコーコール"
+  echo: IdResult
+}
+
+type Mutation {
+  "無いとエラーになるのでとりあえず入れる。シンプルなエコーコール"
+  echom: IdResult
+}
+
+"CustomScalar: Int64"
+scalar Int64
+
+"""
+EmptyResultは、nullで設定して返します。
+何も設定しないとエラーになるため、仕方なくokを設定してますが、サーバ側ではnullで返すので注意です。
+返却例）{"data":{"api名称":null}}
+"""
+type EmptyResult {
+  ok: Boolean
+}
+
+"IDのタイプ"
+type IdResult {
+  id: String!
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}

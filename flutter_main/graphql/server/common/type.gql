@@ -1,0 +1,13 @@
+"""
+EmptyResultは、nullで設定して返します。
+何も設定しないとエラーになるため、仕方なくokを設定してますが、サーバ側ではnullで返すので注意です。
+返却例）{"data":{"api名称":null}}
+"""
+type EmptyResult {
+  ok: Boolean
+}
+
+"IDのタイプ"
+type IdResult {
+  id: String!
+}
