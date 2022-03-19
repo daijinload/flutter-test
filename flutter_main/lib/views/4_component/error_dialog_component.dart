@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-Future<void> showSystemErrorDialog(BuildContext ctx, String message,
+Future<void> showSystemErrorDialog(BuildContext ctx, String message, StackTrace stacktrace,
     [Function? onPressedOk]) async {
   return await showDialog<void>(
     context: ctx,
