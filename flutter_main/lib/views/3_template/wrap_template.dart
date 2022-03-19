@@ -34,11 +34,12 @@ Future<dynamic> exec(
     //   showSystemErrorDialog(ctx, e.toString());
     //   rethrow;
   } on ValidateException catch (e, stackTrace) {
-    // システムエラーダイアログを使っているが、検査例外なので
-    showSystemErrorDialog(ctx, e.toString(), stackTrace);
+    // 検査例外なので、検査例外用のダイアログを用意したいが、
+    // サンプルなのでシステムエラーダイアログを使っている。
+    showSystemErrorDialog(ctx, e.toString(), stackTrace.toString());
     rethrow;
   } catch (e, stackTrace) {
-    showSystemErrorDialog(ctx, e.toString(), stackTrace);
+    showSystemErrorDialog(ctx, e.toString(), stackTrace.toString());
     rethrow;
   }
 }
