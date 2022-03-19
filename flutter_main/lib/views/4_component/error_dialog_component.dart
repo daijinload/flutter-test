@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-Future<void> showSystemErrorDialog(BuildContext ctx, String message, String stacktrace,
+Future<void> showSystemErrorDialog(
+    BuildContext ctx, String message, String stacktrace,
     [Function? onPressedOk]) async {
-
   // 環境変数でスタックトレースを出すかどうか？決められるようにしたい。
   final viewMessage = message + stacktrace;
 
