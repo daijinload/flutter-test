@@ -1,12 +1,8 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_main/common/my_config.dart';
 import 'package:flutter_main/views/1_root/main_root.dart';
 import 'package:flutter_main/src/3_infrastructures/flutter/story/usecase_mock.dart'
     as usecase_mock;
-import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:url_strategy/url_strategy.dart';
 
 void main() async {
@@ -19,23 +15,14 @@ void main() async {
   //   ErrorWidget.builder = (FlutterErrorDetails details) => SomethingWrong();
   // }
 
-  // ignore: todo 最終的には使っている環境編数をクラス化して表現して、
-  // 起動時に表示するのと、内部を見ないと何を使っているのか？わからない状況を改善したい。
-  if (kIsWeb) {
-    await dotenv.load(fileName: 'assets/.env');
-  } else {
-    await dotenv.load(fileName: 'assets/.env', mergeWith: Platform.environment);
-  }
-  // 環境変数をコンフィグファイルに移し替える
-  final config = await setupConfig();
-  // ignore: avoid_print
-  print('.env info: ${config.toJson()}');
+  // 環境変数をコンフィグファイルに入れる
+  final myConfig = await setupMyConfig();
 
   // webで起動した場合に、/#/hogeというパスが、/hogeとシンプルになる。
   setPathUrlStrategy();
 
   // 紙芝居のために、ユースケースをモックする。
-  if (dotenv.env["STORY_MODE"] == 'true') {
+  if (myConfig.storyMode) {
     usecase_mock.exec();
   }
 
