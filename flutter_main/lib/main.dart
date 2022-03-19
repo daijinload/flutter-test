@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:flutter_main/common/config.dart';
+import 'package:flutter_main/common/my_config.dart';
 import 'package:flutter_main/views/1_root/main_root.dart';
 import 'package:flutter_main/src/3_infrastructures/flutter/story/usecase_mock.dart'
     as usecase_mock;
@@ -29,7 +29,7 @@ void main() async {
   // 環境変数をコンフィグファイルに移し替える
   final config = await setupConfig();
   // ignore: avoid_print
-  printObject(config);
+  print('.env info: ${config.toJson()}');
 
   // webで起動した場合に、/#/hogeというパスが、/hogeとシンプルになる。
   setPathUrlStrategy();

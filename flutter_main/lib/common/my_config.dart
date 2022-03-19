@@ -1,15 +1,23 @@
 import 'dart:convert';
 
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:json_annotation/json_annotation.dart';
+
+part 'my_config.g.dart';
 
 /// 環境変数の内容を保持するクラス
 /// 
 /// 使用している環境変数を全て見れるようにしておきたいため、
 /// 追加があればこちらを経由して使う方針としたい。
+@JsonSerializable()
 class MyConfig {
   bool storyMode = false;
   bool isViewDialogStackTrace = false;
   MyConfig();
+
+  factory MyConfig.fromJson(Map<String, dynamic> json) => _$MyConfigFromJson(json);
+
+  Map<String, dynamic> toJson() => _$MyConfigToJson(this);  
 }
 
 late MyConfig myConfig;
