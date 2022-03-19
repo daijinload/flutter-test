@@ -20,7 +20,7 @@ class MyConfig {
   Map<String, dynamic> toJson() => _$MyConfigToJson(this);  
 }
 
-late MyConfig myConfig;
+late final MyConfig myConfig;
 
 Future<MyConfig> setupConfig() async {
   myConfig = MyConfig()
