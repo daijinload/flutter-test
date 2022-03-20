@@ -27,7 +27,6 @@ late final MyConfig myConfig;
 
 /// 環境変数をコンフィグファイルに入れる
 Future<MyConfig> setupMyConfig() async {
-
   // assetsに置いてある.env情報をloadする。
   final map = _load();
 

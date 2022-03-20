@@ -1,6 +1,3 @@
-import 'dart:io';
-
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_main/common/my_config.dart';
 import 'package:flutter_main/views/1_root/main_root.dart';
 import 'package:flutter_main/views/2_page/user_page.dart';
@@ -9,12 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:flutter_main/src/3_infrastructures/flutter/story/usecase_mock.dart'
     as usecase_mock;
-import 'package:path_provider/path_provider.dart';
 
 // flutter test -d linux test/integration_test/views/2_page/user_page_test.dart
 
 void main() async {
-
   // 環境変数のセットアップをする（テスト用の共通処理に移動しても良いかも）
   await setupMyConfig();
 
