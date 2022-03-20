@@ -22,7 +22,6 @@ void main() async {
 
   // API起動しないとエラーになるため、面倒なのでモックで動かす。
   usecase_mock.exec();
-  // DefaultAssetBundle
 
   group('ユーザ情報表示テスト', () {
     testWidgets('初回は空文字で表示すること', (WidgetTester tester) async {
