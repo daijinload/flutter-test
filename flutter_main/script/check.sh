@@ -6,6 +6,8 @@ flutter format lib/*
 flutter format test/*
 flutter format integration_test/*
 
+flutter pub run build_runner build --delete-conflicting-outputs
+
 flutter analyze
 
 flutter test

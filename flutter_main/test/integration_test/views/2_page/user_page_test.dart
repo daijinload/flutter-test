@@ -1,3 +1,4 @@
+import 'package:flutter_main/common/my_config.dart';
 import 'package:flutter_main/views/1_root/main_root.dart';
 import 'package:flutter_main/views/2_page/user_page.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -8,7 +9,10 @@ import 'package:flutter_main/src/3_infrastructures/flutter/story/usecase_mock.da
 
 // flutter test -d linux test/integration_test/views/2_page/user_page_test.dart
 
-void main() {
+void main() async {
+  // 環境変数のセットアップをする（テスト用の共通処理に移動しても良いかも）
+  await setupMyConfig();
+
   // インテグレーションテスト（http通信ありのテスト）をする場合に必要。
   // 下記が無い状態のwidgetテストだと、http通信が全てstatus=400の空文字にモック化されてしまう。
   // rootディレクトリに、integration_testフォルダを作ってテストを実行するとエミュレータなどが
