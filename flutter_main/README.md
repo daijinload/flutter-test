@@ -11,6 +11,9 @@ cp flutter_main/assets/.env.sample flutter_main/assets/.env
 
 flutter pub get
 
+# GraphQLのアルテミスモジュールと、クラスのtoJsonメソッドを自動生成するために使用している。
+flutter pub run build_runner build --delete-conflicting-outputs
+
 # wasm セットアップ
 # dart run wasm:setup
 
