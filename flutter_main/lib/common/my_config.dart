@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 
 part 'my_config.g.dart';
 
@@ -28,25 +27,34 @@ late final MyConfig myConfig;
 
 /// 環境変数をコンフィグファイルに入れる
 Future<MyConfig> setupMyConfig() async {
+
   // assetsに置いてある.env情報をloadする。
-  // webの場合、Platform.environmentを指定するとエラーがスローされるので分岐している。
-  if (kIsWeb) {
-    await dotenv.load(fileName: 'assets/.env');
-  } else {
-    await dotenv.load(fileName: 'assets/.env', mergeWith: Platform.environment);
-  }
+  final map = _load();
 
   // コンフィグの設定を入れていく
   myConfig = MyConfig()
-    ..storyMode = dotenv.env["STORY_MODE"] == 'true'
-    ..isViewDialogStackTrace =
-        dotenv.env["IS_VIEW_DIALOG_STACK_TRACE"] == 'true';
+    ..storyMode = map["STORY_MODE"] == 'true'
+    ..isViewDialogStackTrace = map["IS_VIEW_DIALOG_STACK_TRACE"] == 'true';
 
   // ignore: avoid_print
   // print('.env info: ${myConfig.toJson()}');
   _printObject(myConfig);
 
   return myConfig;
+}
+
+/// envモジュールのloadメソッドを使うとアセットバンドルからのfile loadとなり、
+/// テストの実行時にload出来ない状態となった。
+/// ```dart
+/// // 下記のセットアップテストなら動くがインテグレーションテストだと動かない。
+/// TestWidgetsFlutterBinding.ensureInitialized();
+/// ```
+/// なので、こちら側でファイルreadしてパーサを使ってパースしている。
+Map<String, String> _load() {
+  final Map<String, String> result = {};
+  final list = File('assets/.env').readAsStringSync().split('\n');
+  result.addAll(const Parser().parse(list));
+  return result;
 }
 
 /// 標準出力時に見やすくなるように、インデント付ける処理
