@@ -41,8 +41,8 @@ class MyConfig {
 /// 環境変数をコンフィグファイルに入れる
 Future<MyConfig> setupMyConfig({bool isTest = false}) async {
   // assetsに置いてある.env情報をloadする。
+  // テスト実行時は、ファイルからloadできないので読み込みを分ける。
   if (isTest) {
-    // テスト実行時には
     dotenv.testLoad(fileInput: testEnv);
   } else {
     await dotenv.load(fileName: 'assets/.env');
