@@ -1,8 +1,4 @@
-import 'dart:convert';
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_main/views/2_page/aa_page.dart';
 import 'package:flutter_main/views/2_page/main_page.dart';
 import 'package:flutter_main/views/2_page/bb_page.dart';
@@ -18,17 +14,6 @@ class MainRoot extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return createMaterialApp(context, const MainPage());
-  }
-}
-
-class TestAssetBundle extends CachingAssetBundle {
-  @override
-  Future<ByteData> load(String key) async {
-    if (key == 'resources/test') {
-      return ByteData.view(
-          Uint8List.fromList(utf8.encode('Hello World!')).buffer);
-    }
-    return ByteData(0);
   }
 }
 

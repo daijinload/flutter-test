@@ -6,7 +6,7 @@ part 'my_config.g.dart';
 
 /// インテグレーションテスト実行時に、flutterがアセットloadを
 /// 出来なくするので、回避策としてテストでは下記から読み込むこととする。
-/// 下記のユニットテスト系セットアップだと動いた。
+/// （下記のユニットテスト系セットアップだと動いたが。。。）
 /// ```dart
 /// TestWidgetsFlutterBinding.ensureInitialized();
 /// ```
