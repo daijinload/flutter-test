@@ -11,7 +11,7 @@ import 'package:flutter_main/src/3_infrastructures/flutter/story/usecase_mock.da
 
 void main() async {
   // 環境変数のセットアップをする（テスト用の共通処理に移動しても良いかも）
-  await setupMyConfig();
+  await setupMyConfig(isTest: true);
 
   // インテグレーションテスト（http通信ありのテスト）をする場合に必要。
   // 下記が無い状態のwidgetテストだと、http通信が全てstatus=400の空文字にモック化されてしまう。
