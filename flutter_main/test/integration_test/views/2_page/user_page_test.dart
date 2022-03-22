@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:flutter_main/src/3_infrastructures/flutter/story/usecase_mock.dart'
     as usecase_mock;
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 // flutter test -d linux test/integration_test/views/2_page/user_page_test.dart
 
@@ -30,12 +29,6 @@ void main() async {
         return createMaterialApp(context, const UserPage());
       }));
 
-
-      print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa  c');
-      await dotenv.load(fileName: "assets/.env");
-      print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa  e');
-      print(dotenv.toString());
-      
       expect(find.text(''), findsOneWidget);
       expect(find.text('Mock文字列!!'), findsNothing);
     });

@@ -25,7 +25,8 @@ class TestAssetBundle extends CachingAssetBundle {
   @override
   Future<ByteData> load(String key) async {
     if (key == 'resources/test') {
-      return ByteData.view(Uint8List.fromList(utf8.encode('Hello World!')).buffer);
+      return ByteData.view(
+          Uint8List.fromList(utf8.encode('Hello World!')).buffer);
     }
     return ByteData(0);
   }
@@ -33,9 +34,6 @@ class TestAssetBundle extends CachingAssetBundle {
 
 // テスト側でもMaterialAppを作成したいので、メソッド分割している
 MaterialApp createMaterialApp(BuildContext context, Widget homeWidget) {
-
-
-
   return MaterialApp(
     title: 'Flutter Demo',
     theme: ThemeData(
