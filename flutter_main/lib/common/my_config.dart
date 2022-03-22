@@ -1,9 +1,24 @@
 import 'dart:convert';
-import 'dart:io';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'my_config.g.dart';
+
+/// インテグレーションテスト実行時に、flutterがアセットloadを
+/// 出来なくするので、回避策としてテストでは下記から読み込むこととする。
+/// ```dart
+/// // 下記のテストセットアップなら出来るがインテグレーションテストだと動かない。
+/// TestWidgetsFlutterBinding.ensureInitialized();
+/// ```
+/// 別件だが下記の書き方だと、通常時にもメモリに読み込まれてしまうので、
+/// 増えてきたら関数とかにして遅延ロードするのもいいかと。
+const testEnv = '''
+STORY_MODE=true
+IS_VIEW_DIALOG_STACK_TRACE=true
+''';
+
+/// こちらを参照する。
+late final MyConfig myConfig;
 
 /// 環境変数の内容を保持するクラス
 ///
@@ -23,37 +38,27 @@ class MyConfig {
   Map<String, dynamic> toJson() => _$MyConfigToJson(this);
 }
 
-late final MyConfig myConfig;
-
 /// 環境変数をコンフィグファイルに入れる
-Future<MyConfig> setupMyConfig() async {
+Future<MyConfig> setupMyConfig({bool isTest=false}) async {
+
   // assetsに置いてある.env情報をloadする。
-  final map = _load();
+  if (isTest) {
+    // テスト実行時には
+    dotenv.testLoad(fileInput: testEnv);
+  } else {
+    dotenv.load(fileName: 'assets/.env');
+  }
+  final Map<String, String> map = dotenv.env;
 
   // コンフィグの設定を入れていく
   myConfig = MyConfig()
     ..storyMode = map["STORY_MODE"] == 'true'
     ..isViewDialogStackTrace = map["IS_VIEW_DIALOG_STACK_TRACE"] == 'true';
 
-  // ignore: avoid_print
-  // print('.env info: ${myConfig.toJson()}');
+  // 内容を標準出力に表示する（パスワードなどはサニタイズして表示する）
   _printObject(myConfig);
 
   return myConfig;
-}
-
-/// envモジュールのloadメソッドを使うとアセットバンドルからのfile loadとなり、
-/// テストの実行時にload出来ない状態となった。
-/// ```dart
-/// // 下記のセットアップテストなら動くがインテグレーションテストだと動かない。
-/// TestWidgetsFlutterBinding.ensureInitialized();
-/// ```
-/// なので、こちら側でファイルreadしてパーサを使ってパースしている。
-Map<String, String> _load() {
-  final Map<String, String> result = {};
-  final list = File('assets/.env').readAsStringSync().split('\n');
-  result.addAll(const Parser().parse(list));
-  return result;
 }
 
 /// 標準出力時に見やすくなるように、インデント付ける処理

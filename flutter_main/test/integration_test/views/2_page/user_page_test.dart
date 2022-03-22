@@ -6,12 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:integration_test/integration_test.dart';
 import 'package:flutter_main/src/3_infrastructures/flutter/story/usecase_mock.dart'
     as usecase_mock;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 // flutter test -d linux test/integration_test/views/2_page/user_page_test.dart
 
 void main() async {
   // 環境変数のセットアップをする（テスト用の共通処理に移動しても良いかも）
-  await setupMyConfig();
+  await setupMyConfig(isTest: true);
 
   // インテグレーションテスト（http通信ありのテスト）をする場合に必要。
   // 下記が無い状態のwidgetテストだと、http通信が全てstatus=400の空文字にモック化されてしまう。
@@ -29,6 +30,12 @@ void main() async {
         return createMaterialApp(context, const UserPage());
       }));
 
+
+      print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa  c');
+      await dotenv.load(fileName: "assets/.env");
+      print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa  e');
+      print(dotenv.toString());
+      
       expect(find.text(''), findsOneWidget);
       expect(find.text('Mock文字列!!'), findsNothing);
     });
