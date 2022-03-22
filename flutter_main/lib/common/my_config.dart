@@ -6,8 +6,8 @@ part 'my_config.g.dart';
 
 /// インテグレーションテスト実行時に、flutterがアセットloadを
 /// 出来なくするので、回避策としてテストでは下記から読み込むこととする。
+/// 下記のユニットテスト系セットアップだと動いた。
 /// ```dart
-/// // 下記のテストセットアップなら出来るがインテグレーションテストだと動かない。
 /// TestWidgetsFlutterBinding.ensureInitialized();
 /// ```
 /// 別件だが下記の書き方だと、通常時にもメモリに読み込まれてしまうので、
@@ -45,7 +45,7 @@ Future<MyConfig> setupMyConfig({bool isTest = false}) async {
     // テスト実行時には
     dotenv.testLoad(fileInput: testEnv);
   } else {
-    dotenv.load(fileName: 'assets/.env');
+    await dotenv.load(fileName: 'assets/.env');
   }
   final Map<String, String> map = dotenv.env;
 
